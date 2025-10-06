@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin (Read-only demo)</title>
+  <style>body{font-family:system-ui,Arial;margin:40px;max-width:820px}</style>
+</head>
+<body>
+  <h1>Admin (Demo)</h1>
+  <p>Protect this route via Cognito Hosted UI + ID Token (wire-up in a real app). For now this is a placeholder.</p>
+  <button onclick="load()">Load Metrics</button>
+  <pre id="out"></pre>
+  <script>
+    async function load(){
+      const res = await fetch('/api/metrics/summary');
+      document.getElementById('out').textContent = await res.text();
+    }
+  </script>
+</body>
+</html>
