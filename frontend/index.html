@@ -23,28 +23,30 @@
   <button onclick="contact()">Send</button>
   <pre id="contactOut"></pre>
 
-  <script>
-  async function subscribe(){
-    const email = document.getElementById('subEmail').value;
-    const res = await fetch('/api/subscribe', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({email})
-    });
-    document.getElementById('subOut').textContent = await res.text();
-  }
-  async function contact(){
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({name,email,message})
-    });
-    document.getElementById('contactOut').textContent = await res.text();
-  }
-  </script>
+<script>
+async function subscribe(){
+  const email = document.getElementById('subEmail').value;
+  const res = await fetch('/api/subscribe', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({email})
+  });
+  document.getElementById('subOut').textContent = await res.text();
+}
+
+async function contact(){
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+  const res = await fetch('/api/contact', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({name,email,message})
+  });
+  document.getElementById('contactOut').textContent = await res.text();
+}
+</script>
+
 
   <hr/>
   <p>Variant cookie: <code>ab-variant</code> is set by CloudFront Function (A/B).</p>
